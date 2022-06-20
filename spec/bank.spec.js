@@ -25,6 +25,7 @@ TESTS
 
 const BankAccount = require('../src/BankAccount') 
 const Transaction = require('../src/Transaction')
+const Statement = require('../src/Statement')
 
 describe('bank, transaction', () => {
   let bank;
@@ -54,7 +55,7 @@ describe('bank, transaction', () => {
     expect(bank.balance).toEqual(0)
     // execute
     // const result = transaction.creditAccount(expected.date, expected.credit)
-    bank.deposit(1000);
+    bank.deposit('10/01/2012', 1000);
     const result = bank.balance
     // verify
     expect(result).toEqual(expected)
@@ -65,7 +66,7 @@ describe('bank, transaction', () => {
     const expected = 2500;
     expect(bank.balance).toEqual(3000)
     // execute
-    bank.withdrawal(500)
+    bank.withdrawal('14/10/2012', 500);
     const result = bank.balance
     // verify
     expect(result).toEqual(expected)
@@ -76,9 +77,9 @@ describe('bank, transaction', () => {
     const expected = 3
     // execute
     expect(bank.transactions.length).toEqual(0)
-    bank.deposit(1000)
-    bank.deposit(2000)
-    bank.withdrawal(500)
+    bank.deposit('10/01/2012', 1000)
+    bank.deposit('13/10/2012', 2000)
+    bank.withdrawal('14/10/2012', 500)
     console.log('Statement', bank.transactions);
     // verify
     expect(bank.transactions.length).toEqual(expected)
