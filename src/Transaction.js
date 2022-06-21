@@ -1,12 +1,10 @@
 class Transaction {
-  constructor(date, amount, balance) {
+  constructor(date, credit, debit, balance) {
     this.date = date;
-    this.amount = amount;
+    this.credit = credit;
+    this.debit = debit;
     this.balance = balance
   }
-
-
-  
 }
 
 // class Transaction {

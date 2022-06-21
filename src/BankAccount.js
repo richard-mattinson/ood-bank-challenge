@@ -1,4 +1,5 @@
 const Transaction = require('../src/Transaction')
+const Statement = require('../src/Statement')
 
 class BankAccount {
   constructor() {
@@ -14,9 +15,9 @@ class BankAccount {
     return this.transactions;
   }
 
-  deposit(date, credit) {
+  deposit(date, credit, debit) {
     this.balance += credit;
-    this.transactions.push(new Transaction(date, credit, this.balance));
+    this.transactions.push(new Transaction(date, credit, debit, this.balance));
   }
 
   // deposit(amount) {
@@ -27,10 +28,15 @@ class BankAccount {
   // {amount, date: Date.now(), balance: this.balance}
   // but is pulling the date from Transactions instead
 
-  withdrawal(date, debit) {
+  withdrawal(date, credit, debit) {
     this.balance -= debit;
-    this.transactions.push(new Transaction(date, debit, this.balance));
+    this.transactions.push(new Transaction(date, credit, debit, this.balance));
   }
+
+  getStatement() {
+    new Statement.printStatement()
+  }
+
 }
 
 module.exports = BankAccount;

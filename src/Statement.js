@@ -1,12 +1,25 @@
 class Statement {
-  constructor(date, amount, balance) {
-    this.date = date;
-    this.amount = amount;
-    this.balance = balance;
+  constructor(transactions) {
+    this.transactions = transactions;
   }
 
-// printStatement() {
-//     let statementDate = ('Date', this.date)
-//     let statementAmount = ('Amount', this.amount)
-// }
+  printStatement() {
+    for (let i = 0; i < this.transactions.length; i++) {
+      const statementDate = ['Date', this.transactions[i].date]
+      const statementCredit = ['Credit Amount', this.transactions[i].credit]
+      const statementDebit = ['Debit Amount', this.transactions[i].debit]
+      const statementBalance = ['Balance', this.transactions[i].balance]
+      
+      const statementLine = {
+        statementDate,
+        statementCredit,
+        statementDebit,
+        statementBalance,
+      };
+
+      console.log(statementLine)
+  }
 }
+}
+
+module.exports = Statement;
