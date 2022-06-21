@@ -4,22 +4,21 @@ class Statement {
   }
 
   printStatement() {
-    for (let i = 0; i < this.transactions.length; i++) {
-      const statementDate = ['Date', this.transactions[i].date]
-      const statementCredit = ['Credit Amount', this.transactions[i].credit]
-      const statementDebit = ['Debit Amount', this.transactions[i].debit]
-      const statementBalance = ['Balance', this.transactions[i].balance]
-      
+    const statement = []
+    for (let i = 0; i < this.transactions.length; i++) {      
       const statementLine = {
-        statementDate,
-        statementCredit,
-        statementDebit,
-        statementBalance,
+        'Date': this.transactions[i].date,
+        'Credit': this.transactions[i].credit,
+        'Debit': this.transactions[i].debit,
+        'Balance': this.transactions[i].balance
       };
 
-      console.log(statementLine)
+      statement.push(statementLine)
+
+      // console.log(statementLine)
+    }
+    return statement
   }
-}
 }
 
 module.exports = Statement;

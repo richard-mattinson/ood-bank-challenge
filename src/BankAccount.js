@@ -34,9 +34,9 @@ class BankAccount {
   }
 
   getStatement() {
-    new Statement.printStatement()
+    const statement = new Statement(this.transactions)
+    return statement.printStatement()
   }
-
 }
 
 module.exports = BankAccount;
